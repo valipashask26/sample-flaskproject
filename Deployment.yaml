@@ -1,0 +1,32 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "simple-webapp-docker"
+spec:
+  template: 
+    metadata:
+      labels:
+        name: "simple-webapp-docker"
+    spec:
+      containers:
+        - name: "pythonsample-sk026"
+          image: "pythonsample-sk026"
+          ports:
+            - containerPort: 8080
+              protocol: "TCP"
+  replicas: 1
+  triggers:
+    - type: "ConfigChange" 
+    - type: "ImageChange" 
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - "pythonsample-sk026"
+        from:
+          kind: "ImageStreamTag"
+          name: "pythonsample-sk026:latest"
+  strategy: 
+    type: "Rolling"
+  paused: false 
+  revisionHistoryLimit: 2 
+  minReadySeconds: 0 
