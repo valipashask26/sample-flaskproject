@@ -1,0 +1,29 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: pythonsample-flask-app-using-yaml #image name
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'pythonsample-flask-app-using-yaml:latest'
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: 'https://github.com/valipashask26/sample-flaskproject.git' #ddeployment name
+    type: Git
+  strategy:
+    dockereStrategy:
+    type: Docker
+  triggers:
+    - imageChange:
+        lastTriggeredImageID: >-
+          172.30.1.1:5000/openshift/python@sha256:ac50754646f0d37616515fb30467d8743fb12954260ec36c9ecb5a94499447e0
+      type: ImageChange
+    - type: ConfigChange
+    - generic:
+        secret: fdece69a77d810d3
+      type: Generic
+    - github:
+        secret: adec5c62d1811a8five
+      type: GitHub
