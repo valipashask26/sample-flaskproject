@@ -25,5 +25,5 @@ metadata:
         secret: fdece69a77d810d3
       type: Generic
     - github:
-        secret: adec5c62d1811a8five
+        secret: adec5c62d1811a85
       type: GitHub
