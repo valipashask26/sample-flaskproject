@@ -9,4 +9,4 @@ spec:
   - name: 8080-tcp
     port: 8080
     protocol: TCP
-    targetPort: 5000 #application runs on 5000oort
+    targetPort: 5000 #application runs on 5000port
