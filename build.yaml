@@ -2,6 +2,7 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   name: pythonsample-flask-app-using-yaml #image name
+spec:
   output:
     to:
       kind: ImageStreamTag
